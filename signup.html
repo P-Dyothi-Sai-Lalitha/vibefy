@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibefy Sign Up</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    .vibefy-logo {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    .signup-container {
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 5px 30px;
+      text-align: center;
+    }
+
+    .form-control {
+      background-color: transparent !important;
+      border: 1px solid #535353;
+      color: gray;
+      height: 48px;
+      border-radius: 4px;
+    }
+
+    .form-control:hover {
+      background-color: transparent !important;
+      border: 1px solid white !important;
+    }
+
+    .btn-green {
+      background-color: #1ed760;
+      border: none;
+      color: black;
+      height: 48px;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 25px;
+    }
+
+    .btn-social {
+      background-color: transparent;
+      border: 1px solid #878787;
+      color: white;
+      border-radius: 25px;
+      padding: 10px;
+      font-weight: 500;
+    }
+
+    .btn-social img {
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    .btn-social :hover {
+      border: 1px solid white;
+      color: white;
+    }
+
+    .btn-green:hover {
+      background-color: #25f56e;
+
+
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #878787;
+    }
+
+    .divider:not(:empty)::before {
+      margin-right: .75em;
+    }
+
+    .divider:not(:empty)::after {
+      margin-left: .75em;
+    }
+
+    a {
+      color: #1ed760;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+
+    .btn-social:hover {
+      color: white;
+      border: 1px solid white;
+    }
+
+    .btn1,
+    .btn2,
+    .btn3 {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .btn1 span,
+    .btn2 span,
+    .btn3 span {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      width: max-content;
+    }
+
+    .btn1:hover,
+    .btn2:hover,
+    .btn3:hover {
+      border: none;
+    }
+
+    .btn1 span:hover,
+    .btn2 span:hover,
+    .btn3 span:hover {
+      border: none;
+    }
+
+    .btn-social {
+      background-color: transparent;
+      border: 1px solid #878787;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      height: 48px;
+
+    }
+
+    .btn-social img {
+      height: 20px;
+      border: none;
+    }
+
+
+
+
+    @media (max-width: 400px) {
+      .signup-container {
+        margin: 40px 16px;
+        padding: 0 10px;
+      }
+
+      .vibefy-logo {
+        width: 40px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        line-height: 1.4;
+      }
+
+      .form-control {
+        height: 42px;
+        font-size: 14px;
+      }
+
+      .btn-green {
+        height: 42px;
+        font-size: 14px;
+      }
+
+      .btn-social {
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      .btn-social img {
+        height: 18px;
+        margin-right: 8px;
+      }
+
+      a {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="signup-container">
+    <img src="./Vibefy logo.png" alt="vibefy Logo" class="vibefy-logo">
+
+    <h1><strong><b>Sign up to<br>start listening</b></strong></h1>
+    <form action="./VIBEFY.html">
+      <div class="text-left mt-4"><br />
+        <span style="font-size: 13px;"><b>Email Address</b></span>
+        <input type="email" class="form-control mt-2 mb-2" id="email" placeholder="name@domain.com" name="email" required>
+        <div class="mb-3">
+          <a href="#" style="color: #1ed760;">Use phone number instead.</a>
+        </div>
+        <button class="btn btn-green mb-3">Next</button>
+      </div>
+    </form>
+    <div class="divider">or</div>
+    <form action="./VIBEFY.html">
+      <div class="btn-parent">
+
+        <button class="btn btn-social btn-block mb-2 btns ">
+          <div class="btn1">
+            <img src="https://cdn-icons-png.flaticon.com/512/300/300221.png" alt="Google">
+            <span> Sign up with Google</span>
+          </div>
+        </button>
+        <button class="btn btn-social btn-block mb-2 btns">
+          <div class="btn2">
+            <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook">
+            <span>Sign up with Facebook</span>
+          </div>
+        </button>
+        <button class="btn btn-social btn-block mb-2 btns">
+          <div class="btn3">
+            <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" alt="Apple">
+            <span> Sign up with Apple</span>
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="text-center text-muted" style="font-size: 14px;">
+    <hr style="border-color: #2a2a2a; max-width: 400px; margin: 20px auto 10px auto;">
+
+    <p class="mt-4">
+      Already have an account?
+      <a href="#" style="color: white; text-decoration: underline;">Log in here.</a>
+    </p>
+    <p style="color: #b3b3b3;">
+      This site is protected by reCAPTCHA and the Google </br>
+      <a href="#" style="color: #b3b3b3; text-decoration: underline;">Privacy Policy</a>
+      and
+      <a href="#" style="color: #b3b3b3; text-decoration: underline;">Terms of Service</a> apply.
+    </p>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

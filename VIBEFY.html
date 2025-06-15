@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibefy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+    }
+
+    .navbar-custom {
+      background-color: #000;
+      padding: 10px 0px;
+      justify-content: space-between;
+      position: sticky;
+      align-items: center;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-bottom: 0.5%;
+    }
+
+    .home-icon {
+      background-color: #2a2a2a;
+      font-size: 25px;
+      margin: 0 30px;
+      border-radius: 500%;
+      padding: 8px;
+    }
+
+    .open-app-btn {
+      background: #fff;
+      color: #000;
+      border-radius: 25px;
+      font-weight: bold;
+      padding: 6px 20px;
+      border: none;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background: #000;
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 30px 20px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: white;
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .mobile-menu .close-btn {
+      align-self: flex-end;
+      font-size: 28px;
+      color: white;
+      background: none;
+      border: none;
+    }
+
+    .divider {
+      border-top: 2px solid #fff;
+      width: 40px;
+      margin: 15px 0;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #222;
+      border-radius: 25px;
+      padding: 5px 10px;
+      padding-left: 5px;
+      color: rgb(173, 173, 173);
+      padding-right: 5px;
+    }
+
+    .search-input {
+      background: transparent;
+      border: none;
+      color: rgb(173, 173, 173) !important;
+      outline: none;
+      width: 353px;
+    }
+
+    .search-input::placeholder {
+      color: rgb(173, 173, 173);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgb(173, 173, 173);
+      text-decoration: none;
+      margin-right: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .nav-link:hover {
+      color: white;
+      font-size: 17px;
+    }
+
+    .divider-vertical {
+      width: 1px;
+      height: 20px;
+      background-color: white;
+      margin: 0 10px;
+      margin-right: 40px;
+      margin-left: 20px;
+    }
+
+    .login-btn {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-left: 10px;
+      font-size: 1.6rem;
+    }
+
+    .login-btn:hover {
+      font-size: 1.1rem;
+      background: #e0e0e0;
+    }
+
+    .mobile-version {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100;
+    }
+
+
+
+    .container-fluid {
+      z-index: 0;
+      margin-right: 7px;
+      position: fixed;
+      width: 106%;
+    }
+
+
+    .library-section {
+      background-color: #121212;
+      margin-left: 0.45%;
+      border-radius: 12px;
+      height: 79.5vh;
+      padding: 10px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (max-width: 768px) {
+      .library-section {
+        height: 84vh;
+      }
+    }
+
+    .library-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+      color: white;
+    }
+
+    .library-header {
+      position: sticky;
+      top: 0;
+      background-color: #121212;
+      z-index: 10;
+      margin-top: 2%;
+      margin-left: 2%;
+    }
+
+    .library-icons i {
+      color: rgb(173, 173, 173);
+      margin-right: 20px;
+      padding: 10px 11px;
+      font-size: 1rem;
+    }
+
+    .library-icons i:hover {
+      border: none;
+      border-radius: 50%;
+      background-color: transparent;
+      background-color: #2a2a2a6e;
+    }
+
+    .scrollable-content {
+      overflow-y: auto;
+      flex-grow: 1;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      min-height: 300px;
+    }
+
+    .scrollable-content::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .scrollable-content::-webkit-scrollbar-thumb {
+      background: #55555500;
+
+    }
+
+    .scrollable-content::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .library-box {
+      background-color: #1f1f1f;
+      border-radius: 8px;
+      padding: 20px;
+      padding-top: 18px !important;
+      padding-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      color: white;
+      font-size: 13px;
+
+    }
+
+
+    .library-box:hover {
+      background-color: #2a2a2a;
+    }
+
+    .library-box h6 {
+      margin-bottom: 8px;
+    }
+
+    .library-box p {
+      font-size: 14px;
+      color: white;
+      font-weight: 500;
+      margin-bottom: 10px !important;
+    }
+
+    .library-box button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 6px 20px;
+      font-weight: bold;
+      border-radius: 20px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .library-box button:hover {
+      background-color: #e0e0e0;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      font-size: 12px;
+      color: #b3b3b3;
+      margin-top: 0px;
+      margin-bottom: 140px;
+      padding: 8px 15px;
+      flex-shrink: 0;
+
+    }
+
+    .footer-links a {
+      color: rgb(173, 173, 173);
+      margin-right: 10px;
+      text-decoration: none;
+
+    }
+
+    .ads-accessibility {
+      margin-top: 11px;
+      margin-bottom: 11px;
+
+    }
+
+    .cookies {
+      color: white !important;
+      margin-bottom: 29px !important;
+    }
+
+    .cookies:hover {
+      text-decoration: underline;
+    }
+
+    .lang-select {
+      border: 1px solid gray;
+      background-color: #131313;
+      border-radius: 25px;
+      width:100%;
+      max-width: 100px;
+      padding: 3px 9px;
+      display: flex;
+      align-items: center;
+    }
+
+    .lang-select button {
+      background: transparent;
+      color: white;
+      background-color: #13131300;
+      font-size: 0.8rem;
+      font-weight: bolder;
+      padding: 1px 5px;
+    }
+
+    .lang-select button:hover {
+      font-size: 0.9rem;
+    }
+
+    .lang-select i {
+      font-size: 1rem;
+      margin-right: 5px;
+      color: white;
+    }
+
+    .lang-select:hover {
+      font-size: 5rem;
+      color: white;
+      border: 1px solid white;
+    }
+
+
+
+    .spotify-scroll-box {
+      background: #1f1f1f;
+      background: linear-gradient(180deg, rgb(27, 27, 27) 47%, rgba(12, 12, 12, 1) 100%);
+      background-attachment: fixed;
+      height: 79.5vh;
+      border-radius: 12px;
+      overflow-y: auto;
+      padding-top: 1.6%;
+      padding-left: 2%;
+      margin-left: auto;
+      overflow-x: auto;
+      z-index: 0;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .spotify-scroll-box {
+        height: 86.5vh !important;
+      }
+
+      .body {
+        padding: 1rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .spotify-scroll-box {
+        width: 72.6%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .spotify-scroll-box {
+        margin-top: 15px;
+      }
+    }
+
+    .spotify-scroll-box::-webkit-scrollbar {
+      width: 12px;
+      border-radius: 12px;
+    }
+
+    .spotify-scroll-box::-webkit-scrollbar-thumb {
+      width: 4px;
+      background-color: #55555500;
+    }
+
+    .spotify-scroll-box::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+    .spotify-scroll-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .songs-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .slider-name {
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .slider-name a {
+      font-family: 'Segoe UI', sans-serif;
+      text-decoration: none;
+    }
+
+    .slider-name a:hover {
+      text-decoration: underline;
+    }
+
+    .songs-slider::-webkit-scrollbar {
+      display: none;
+    }
+
+    .song-card {
+      width: 180px;
+      background-color: #28282800;
+      border-radius: 10px;
+      margin-right: 0px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .song-card:hover {
+      background: #121212;
+      background: linear-gradient(180deg, rgb(26, 26, 26) 36%, rgb(37, 37, 37) 49%);
+    }
+
+    .song-card img {
+      width: 100%;
+      max-width: 175px;
+      height: 175px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 10px solid #00000005;
+    }
+
+    .slide1 {
+      padding-top: 2.5%;
+    }
+
+    .slide1,
+    .slide2,
+    .slide3,
+    .slide4,
+    .slide5,
+    .slide6 {
+      padding-left: 3%;
+    }
+
+    .slide2 img {
+      border-radius: 50%;
+      border: 10px solid #00000005;
+      max-width: 200px !important;
+      height: 180px !important;
+    }
+
+    .song-card p {
+      text-align: left !important;
+      padding-left: 13px !important;
+    }
+
+    .artist {
+      color: rgb(173, 173, 173) !important;
+      font-size: 0.91rem !important;
+
+    }
+
+    .circle-indicator {
+      position: absolute;
+      font-size: 1.5rem;
+      padding-top: 3px;
+      padding-left: 3px;
+      bottom: 100px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background-color: #00db4d;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .position-relative:hover .circle-indicator {
+      opacity: 1;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 39%;
+      transform: translateY(-50%);
+      background-color: #00000000;
+      border: none;
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0);
+      font-size: 1.3rem;
+      font-weight: lighter;
+      padding: 0% 1.3%;
+      padding-bottom: 0.3%;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .scroll-btn:hover {
+      background-color: rgb(39, 39, 39);
+      color: rgb(255, 255, 255)
+    }
+
+    .scroll-left {
+      left: 0;
+    }
+
+    .scroll-right {
+      right: 0;
+    }
+
+
+
+    .spotify-footer {
+      border-top: 1px solid #282828;
+      padding-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #282828;
+      padding-bottom: 20px;
+      margin-top: 10px
+    }
+
+    .footer-column {
+      min-width: 150px;
+      padding: 10px;
+      margin-right: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-column h5 {
+      color: white;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      color: #b3b3b3;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 14px;
+
+    }
+
+    .footer-content a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .footer-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 0px;
+      margin-left: 10px;
+      padding: 10px 10px;
+
+
+    }
+
+    .footer-icons i {
+
+      font-size: 18px;
+      color: #b3b3b3;
+      cursor: pointer;
+      padding: 10px 10px;
+      border-radius: 500%;
+      margin-bottom: 120px;
+    }
+
+    .footer-icons i:hover {
+      background-color: #2a2a2a;
+    }
+
+    .footer-bot {
+      text-align: left;
+      margin-top: 30px;
+      margin-bottom: 50px;
+      margin-left: 10px;
+      font-size: 12px;
+      color: #b3b3b3;
+    }
+
+    @media (min-width: 992px) {
+      .mobile-version {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .desktop-version {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .mobile-version {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .desktop-version {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 416px) and (min-width: 388px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 15px;
+      }
+
+      .footer-column {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+
+      .footer-column h5 {
+        font-size: 14px;
+      }
+
+      .footer-column a {
+        font-size: 13px;
+      }
+
+      .footer-icons {
+        margin-left: 0;
+        justify-content: flex-start;
+        padding-left: 0;
+        gap: 10px;
+      }
+
+      .footer-icons i {
+        font-size: 16px;
+        padding: 8px;
+      }
+
+      .footer-bot {
+        text-align: center;
+        font-size: 11px;
+      }
+    }
+
+    .color-strip {
+      background: #c702b0;
+      background: linear-gradient(90deg, rgb(165, 30, 149) 0%, rgba(145, 67, 171, 1) 25%, rgba(54, 148, 224, 1) 100%);
+      font-family: sans-serif;
+      color: white;
+      padding-top: 0.7%;
+      padding-left: 1%;
+      padding-right: 0.6%;
+      padding-bottom: 0.5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5%
+    }
+
+    .color-strip a {
+      background-color: whitesmoke;
+      color: black;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 0.97rem;
+      font-weight: 700;
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .navbar-brand:hover {
+      color: black;
+      background: #e0e0e0;
+      font-size: 1rem;
+    }
+
+    #main-container {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 77vh;
+      overflow: visible;
+      background-color: #00000000;
+    }
+
+    #main-container object {
+
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar-custom pb-0">
+    <div class="desktop-version d-flex align-items-center w-100 justify-content-between">
+      <div class="d-flex align-items-center">
+        <img src="./vibefylogo.png" alt="Spotify" height="40" class="ml-2 mr-4" />
+        <i class="fas fa-home text-white mr-2"
+          style="font-size: 20px; border-radius: 1000%; background-color: #2a2a2a; padding: 13px;"></i>
+        <div class="search-box d-flex align-items-center">
+          <div class="search-box position-relative">
+            <div>
+              <i class="fas fa-search search-icon ml-0 " style="position: absolute;top: 8px; font-size: 1.4rem;"></i>
+              <input type="text" class="search-input ml-4" placeholder="What do you want to play?" />
+            </div>
+            <div>
+              <img src="./basket logo.png" style="width:42px;" alt="basket">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link">Premium</a>
+        <a href="#" class="nav-link">Support</a>
+        <a href="#" class="nav-link">Download</a>
+        <span class="divider-vertical"></span>
+        <a href="#" class="nav-link" style="font-size: 0.8rem;margin-right: 30px;"> <i
+            style="font-size: 1rem;margin-right:5px;" class="fa-regular fa-circle-down"></i> Install App</a>
+        <a href="./signup.html" class="nav-link" style="font-size: 0.8rem;">Sign up</a>
+        <a href="./login.html" class="login-btn" style="color: black !important;">Log in</a>
+      </div>
+    </div>
+    <div class="mobile-version">
+      <img src="./vibefylogo.png" alt="Spotify" height="40" />
+      <div class="d-flex align-items-center">
+        <i class="fas fa-search text-white mr-3" style="font-size: 20px;"></i>
+        <button class="open-app-btn mr-3">Open App</button>
+        <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></button>
+    <a href="#">Log in</a>
+    <a href="#">Sign up</a>
+    <span></span>
+    <div class="divider"></div>
+    <a href="#">Premium</a>
+    <a href="#">Help</a>
+    <a href="#">Download</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 d-none d-md-flex flex-column library-section">
+        <div class="library-header">
+          <h6> <b>Your Library</b></h6>
+          <div class="library-icons">
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
+        <div class="scrollable-content">
+          <div class="library-box">
+            <h6><b>Create your first playlist</b></h6>
+            <p>It's easy, we'll help you</p>
+            <button>Create playlist</button>
+          </div>
+          <div class="library-box">
+            <h6><b>Let's find some podcasts to follow</b></h6>
+            <p>We'll keep you updated on new episodes</p>
+            <button>Browse podcasts</button>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#">Legal</a>
+          <a href="#">Safety&PrivacyCenter</a>
+          <a href="#">PrivacyPolicy</a>
+          <a href="#">Cookies</a> <br>
+          <div class="ads-accessibility">
+            <a href="#">About Ads</a>
+            <a href="#">Accessibility</a> <br>
+          </div>
+          <div class="cookies">
+            <a href="#">Cookies</a>
+          </div>
+          <div class="lang-select mt-2 p-2">
+            <i class="fas fa-globe"></i>
+            <button type="button" class="btn">English</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container" style="max-width: 99% !important; width: 99% !important;">
+    <div class="row" style="border-radius: 12px;">
+      <div class="col-12 col-md-8  spotify-scroll-box">
+        <div id="main-container">
+          <div class="slide1">
+            <div class="slider-name">
+              <a href=""
+                style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%; margin-bottom:1%;">Trending
+                Songs</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container   mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block" data-page="playlist.html">
+                  <img src="./songs/img1.jpg" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Yemito</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Haricharan</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img2.jpg" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Kathakaadhey</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Anirudh Ravichander, Ajesh,
+                      Srinidhi
+                      Venkatesh</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img3.jpg" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Cinderella's Dead</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Emeline</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img4.png" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Shape of you</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Ed Sheeran</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img5.jpg" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Ranjha</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Jasleen Royal, B Praak, Romy </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img6.jpg" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white"> Neeveyley Neeveyley</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">A.R Rehaman, Shreya Ghoshal </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img7.jpg" alt="Song 7" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Abhi Mujh Mein Kahin</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Ajay-Atul, Sonu Nigam</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img8.jpg" alt="Song 8" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Fake Love-Orchestral Version</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">MDP</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img9.jpg" alt="Song 9" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Lost Glacier</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Zhang Zhe Han</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img10.jpg" alt="Song 10" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Sighs</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Ju Jing Yi</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img11.jpg" alt="Song 11" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Wan Ye Wei Yu Wen Haitang</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Yiming, Xuan Xiao lirz</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img12.jpg" alt="Song 12" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Yuan Zhou de Shaonian</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Hou Ming Hao</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img13.png" alt="Song 13" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Solo</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Jennie</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img14.jpg" alt="Song 14" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Stay</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Blackpink</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./songs/img15.jpg" alt="Song 15" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Black Moonlight</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Luo Yunxi, Bai Lu</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="slide2">
+            <div class="slider-name">
+              <a href="" style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%; ">Popular
+                Artists</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img1.jpg" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">A.R Rehaman</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img2.jpg" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Anirudh Ravichander</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img3.jpg" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Sid Sriram</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img4.jpg" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Sunitha Upadrasta</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img5.png" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Shreya Ghoshal</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img6.png" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Taylor Swift</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img7.png" alt="Song 7" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Ajith Singh</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img8.png" alt="Song 8" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white"></p>
+                    <p class="mb-1 fw-semibold text-white">Vishal Mishra</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img9.jpg" alt="Song 9" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Olivia Rodrigo</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img10.jpg" alt="Song 10" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">BTS</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img11.jpg" alt="Song 11" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Blackpink</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img12.png" alt="Song 12" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Baby Monster</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img13.jpg" alt="Song 13" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Zhang Zhe Han</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img14.png" alt="Song 14" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Hou Ming Hao</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./artists/img15.png" alt="Song 15" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Xiao Zhan</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Artist</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="slide3">
+            <div class="slider-name">
+              <a href="" style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%;">Popular Albums and
+                singles</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block" data-page="playlist.html">
+                  <img src="./albumns/img1.jpg" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Andala Rakshasi</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Radhan, Rakendu Mouli, Krishna
+                      Kanth, Vasishta Sharma, Lakshmi Bhupala</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img2.jpg" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Orange</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Harris Jayaraj</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img3.jpg" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Pushpa The Rise Part - 01</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Devi Sri Prasad</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img4.jpg" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">I</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">A.R Rahman</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img5.png" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Hurry Up Tomorrow</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> The Weeknd</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img6.png" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">The Death of Slim Shady (Coup De Grâce)</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Eminem</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img7.jpg" alt="Song 7" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Aashiqui 2</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Jeet Gannguli, Mithoon, Ankit
+                      Tiwari
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img8.jpg" alt="Song 8" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Vaaranam Aayiram</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Harris Jayaraj</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img9.jpg" alt="Song 9" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Dilwale Dulhania Le Jayenge</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Jatin-Lalit</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img10.jpg" alt="Song 10" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Born Pink</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Blackpink</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img11.jpg" alt="Song 11" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Love Yourself 'Answer'</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">BTS</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img12.png" alt="Song 12" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">The Untamed</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;"> Lin Hai</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img13.jpg" alt="Song 13" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Deep Blue</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Zhang Zhe Han</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img14.jpg" alt="Song 14" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Till The End Of The Moon</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Luo Yunxi, Zhang Bi Chen, Mao Buyi,
+                      Tia Ray, Tiger Hu</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./albumns/img15.jpg" alt="Song 15" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-1 fw-semibold text-white">Fangs Of Fortune</p>
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Hou Ming Hao, Zhang Bi Chen, Amber
+                      Kuo, Chris Lee Artiste</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="slide4">
+            <div class="slider-name">
+              <a href="" style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%; ">Popular Radio</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img1.png" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Sachin-Jigar, Pritam, Atif
+                      Aslam
+                      and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img2.png" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Karan Aujla, Shubh, Sidhu
+                      Moose
+                      Wala and more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img3.png" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Atif Aslam, Mustafa Zahid,
+                      Pritam and more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img4.png" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With G. V. Prakash, Hariharan,
+                      Yuvan
+                      Shankar Raja and more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img5.png" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With A.R. Rahman, Atif Aslam,
+                      Salim–Sulaiman and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img6.png" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Badshah, Guru Randhawa,
+                      Sachin-Jigar and more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img7.png" alt="Song 7" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Shubh, AP Dhillon, JERRY and
+                      more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img8.png" alt="Song 8" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Shubh, DIVINE, AP Dhillon and
+                      more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img10.png" alt="Song 9" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Mukesh, Mohammed Rafi, Hemant
+                      Kumar and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img10.png" alt="Song 10" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Alka Yagnik, Anuradha Paudwal,
+                      Jatin-Lalit and more
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img11.png" alt="Song 11" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Uttam Singh, Alka Yagnik,
+                      Vinod
+                      Rathod and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img12.png" alt="Song 12" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Kumar Sanu, Udit Narayan,
+                      Vinod
+                      Rathod and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img13.png" alt="Song 13" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Sumit Parta, Amanraj Gill,
+                      Billa
+                      Sonipat Ala and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img14.png" alt="Song 14" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With Swarnalatha, Vaali,
+                      Bhavatharini
+                      and more</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./radio/img15.png" alt="Song 15" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">With M. M. Keeravaani, Swarnalatha,
+                      Annamayya Keerthana and more</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="slide5">
+            <div class="slider-name">
+              <a href="" style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%; ">Featured
+                Charts</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img1.png" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your weekly update of the most
+                      played tracks
+                      right now - Global.</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img2.png" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your weekly update of the most
+                      played tracks
+                      right now - India.
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img3.png" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your daily update of the most
+                      played tracks
+                      right now - Global.</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img4.png" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your daily update of the most
+                      played tracks
+                      right now - India.
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img5.png" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your daily update of the most viral
+                      tracks
+                      right now - Global.</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./charts/img6.png" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Your daily update of the most viral
+                      tracks
+                      right now - India.</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="slide6">
+            <div class="slider-name">
+              <a href="" style="color: white; font-size: 1.5rem; font-weight:700; margin-left: 1.2%; ">India's Best</a>
+              <a href="" style="color:rgb(173, 173, 173); font-size: 0.8rem; font-weight: bolder;
+            margin-top: 2%; margin-right: 3.2%;">Show all</a>
+            </div>
+            <div class="slider-container mb-5">
+              <button class="scroll-btn scroll-left">&#10094;</button>
+              <div class="songs-slider">
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img1.png" alt="Song 1" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Hottest tracks from your favourite
+                      I-Pop
+                      Icons. Cover- Jubin Nautiyal</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img2.png" alt="Song 2" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Ultimate 101 Punjabi Hits with Guru
+                      Randhawa
+                    </p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img3.png" alt="Song 3" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Bollywood Central, jab baje toh
+                      seedha dil
+                      ke centre mein lage Cover - RRKPK</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img4.png" alt="Song 4" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">India's Rap Scene. Cover - Paal
+                      DabbaLil Nas
+                      X</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img5.png" alt="Song 5" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Finest collection of Tamil Music
+                      from the
+                      past 10 years Cover : Dragon</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img6.png" alt="Song 6" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Most exciting artists from the
+                      Indian Indie
+                      scene. Cover: maahi</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img7.png" alt="Song 7" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Biggest Haryanvi hits from the last
+                      10
+                      years. Cover: Raju Punjabi</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img8.png" alt="Song 8" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">The finest set of Telugu music from
+                      the past
+                      10 years. Cover : Pushpa 2</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img9.png" alt="Song 9" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Best of the Indian Indie scene.
+                      Cover -
+                      Kushagra</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img10.png" alt="Song 10" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Best of the Indian Indie scene.
+                      Cover -
+                      Kushagra</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img11.png" alt="Song 11" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">Biggest Bhojpuri hits from the last
+                      10
+                      years.</p>
+                  </div>
+                </div>
+                <div class="song-card position-relative d-inline-block">
+                  <img src="./best/img12.png" alt="Song 12" class="img-fluid" />
+                  <div class="circle-indicator"><i class="fa-solid fa-play"></i></div>
+                  <div class="mt-2">
+                    <p class="mb-0 text-secondary artist" style="font-size: 0.9rem;">An exclusive collection of Kannada
+                      super hit
+                      songs. Cover : KGF 2</p>
+                  </div>
+                </div>
+              </div>
+              <button class="scroll-btn scroll-right">&#10095;</button>
+            </div>
+          </div>
+
+          <div class="spotify-footer">
+            <div class="footer-content">
+              <div class="footer-column">
+                <h5>Company</h5>
+                <a href="#">About</a>
+                <a href="#">Jobs</a>
+                <a href="#">For the Record</a>
+              </div>
+              <div class="footer-column">
+                <h5>Communities</h5>
+                <a href="#">For Artists</a>
+                <a href="#">Developers</a>
+                <a href="#">Advertising</a>
+                <a href="#">Investors</a>
+                <a href="#">Vendors</a>
+              </div>
+              <div class="footer-column">
+                <h5>Useful links</h5>
+                <a href="#">Support</a>
+                <a href="#">Free Mobile App</a>
+              </div>
+              <div class="footer-column">
+                <h5>Spotify Plans</h5>
+                <a href="#">Premium Individual</a>
+                <a href="#">Premium Duo</a>
+                <a href="#">Premium Family</a>
+                <a href="#">Premium Student</a>
+                <a href="#">Spotify Free</a>
+              </div>
+              <div class="footer-icons">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-facebook"></i>
+              </div>
+            </div>
+            <div class="footer-bot">
+              <p>© 2025 Spotify AB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 ">
+        <div class="fixed-bottom color-strip d-none d-md-flex">
+          <div class="description">
+            <span style="font-weight: 710; font-size:0.88rem;">Preview of Vibefy</span><br />
+            <span style="font-size:0.97rem; font-weight:530;">Sign up to get unlimited songs and podcasts
+              with occasional ads. No credit card needed.</span>
+          </div>
+          <a class="navbar-brand" href="./signup.html">Sign up free</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const container = document.getElementById('main-container');
+    const originalContent = container.innerHTML;
+
+
+    const params = new URLSearchParams(window.location.search);
+    const startPage = params.get('page');
+    if (startPage) {
+      loadEmbedded(startPage, false);
+    }
+
+
+    window.open = url => loadEmbedded(url);
+
+
+    container.addEventListener('click', event => {
+      if (event.target.id === 'back-button') {
+        restoreOriginal();
+        history.pushState({ view: 'original' }, '', window.location.pathname);
+        return;
+      }
+
+      const card = event.target.closest('.song-card');
+      if (!card) return;
+
+      event.preventDefault();
+      const page = card.dataset.page || 'yourOtherPage.html';
+
+
+      history.pushState({ view: 'embedded', url: page }, '', '?page=' + encodeURIComponent(page));
+      loadEmbedded(page, false);
+    });
+
+
+    function loadEmbedded(pageUrl, addHistory = false) {
+      container.innerHTML = `
+      <div style="position: relative; width:100%; height:100%;">
+        <button id="back-button" style="position:absolute; top:0px; left:0px; z-index:10;background:transparent; color:transparent;border:none;font-weight:bold;">← Back</button>
+        <object type="text/html" data="${pageUrl}" style="width:100%; height:100%; border:none;"></object>
+      </div>`;
+      if (addHistory) {
+        history.pushState({ view: 'embedded', url: pageUrl }, '', '?page=' + encodeURIComponent(pageUrl));
+      }
+    }
+
+
+    function restoreOriginal() {
+      container.innerHTML = originalContent;
+      history.replaceState({ view: 'original' }, '', window.location.pathname);
+    }
+
+
+    window.addEventListener('popstate', event => {
+      if (!event.state || event.state.view === 'original') {
+        restoreOriginal();
+      } else {
+        loadEmbedded(event.state.url, false);
+      }
+    });
+
+    history.replaceState({ view: 'original' }, '', window.location.pathname);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  <script>
+    document.querySelectorAll('.scroll-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const slider = button.closest('.slider-container').querySelector('.songs-slider');
+        const direction = button.classList.contains('scroll-left') ? -300 : 300;
+        slider.scrollBy({ left: direction, behavior: 'smooth' });
+      });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("active");
+    }
+  </script>
+</body>
+
+</html>
